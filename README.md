@@ -1,7 +1,7 @@
 # Chrome Prefabs
 ### Browser navigation with organization based on domain prefixes.
 
-## Tabs Comparison (Actually a light example usually > 31)
+## Light Example (Usually way more than 31)
 
 ![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/comparison.png)
 
