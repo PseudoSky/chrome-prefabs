@@ -30,7 +30,13 @@ This version contains little to none of the functional purpose of the original
 
 Here are some screenshots
 
+## Popup view:
 
 ![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot1.png)
+
+
+## Clickable Prefixed Tab Locations (github.com)
 ![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot2.png)
+
+## Clickable Prefixed Tab Locations (mail.google.com)
 ![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot3.png)
