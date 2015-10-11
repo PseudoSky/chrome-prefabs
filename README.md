@@ -1,6 +1,11 @@
 # Chrome Prefabs
 ### Browser navigation with organization based on domain prefixes.
 
+## Tabs Comparison (Actually a light example usually > 31)
+
+![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/comparison.png)
+
+
 ### Note
 I built this from a chrome extension I hacked. Because of the license in the original version, I don't think I can publicly distribute the code. If I misunderstood the contract, or you would like to see the code, let me know.
 
@@ -37,9 +42,7 @@ This version contains little to none of the functional purpose of the original
 
 Here are some screenshots
 
-## Tabs Comparison (Actually a light example usually > 31)
 
-![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/comparison.png)
 
 ## Popup view:
 
