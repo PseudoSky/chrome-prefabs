@@ -1,5 +1,6 @@
 # Chrome Prefabs
-### Browser navigation with organization based on domain prefixes.
+
+Browser navigation with organization based on domain prefixes. Original idea, and implementation in < 1 hour (No modification since)
 
 ## Light Example (Usually way more than 31)
 
