@@ -1,5 +1,5 @@
 var tabApp = angular.module('tabsApp', []);
-
+_.mixin(s.exports());
 tabApp.controller('tabCtrl', function($scope,$compile){
     var background = chrome.extension.getBackgroundPage(),
         TABAREA_WIDTH = 620,
@@ -516,7 +516,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
     function fqdn(url){
         var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
         if ( match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0 ) {
-            return match[2].split('.').reverse().join(".");
+            return _.strRight(match[2].split('.').reverse().join("."),'.');
         }
     }
     function hostname(url, reverse) {
@@ -660,14 +660,18 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             stz.forEach(function(s) {
                 a=s.url;
                 console.log('aa',s,a);
-                var holder=$("<div/>", {
-                    "class": "databoii"
+                var holder=$("<ul/>", {
+                    "class": "collection with-header databoii"
                 })
-                var ns=$("<h4/>", {
-                    "class": "db-title",
+                var title_li=$("<li/>", {
+                    "class": "collection-header"
+                });
+                var ns=$("<h6/>", {
+                    // "class": "collection-header db-title",
                     text: a
                 });
-                holder.append(ns);
+                title_li.append(ns);
+                holder.append(title_li);
 
                 // console.log('A',a);
                 Object.keys($scope.sites[a]).sort().forEach(function(b) {
@@ -688,19 +692,30 @@ tabApp.controller('tabCtrl', function($scope,$compile){
                         // }).appendTo(holder);
 
                         var nc=$("<div/>", {
-                            "class": "db-child"
 
                         });
-                        var taburl=$("<a/>",{
-                            text: b,
-                            "class": "db-tablink",
-                            click: onURLClick,
-                            tabId: $scope.sites[a][b].id
+                        var nc1=$("<li/>", {
+                            "class": "collection-item db-child"
+
+                        });
+                        var icn = $('<i/>',{
+                            "class":"material-icons",
+                            text:'close'
                         })
-                        var closer=$("<input/>",{type:"button",click:onTabClose,text:"X","class":"close-button",tabId: $scope.sites[a][b].id});
+                        // URI TEXT
+                        var taburl=$("<a/>",{
+                            text: _.strRight(_.strRight(b,'//'),'/'),
+                            click: onURLClick,
+                            tabId: $scope.sites[a][b].id,
+                            "class": "db-tablink"
+                        })
+                        var closer=$("<span/>",{click:onTabClose,tabId: $scope.sites[a][b].id,"class":'right'});
+
+                        closer.append(icn);
                         nc.append(taburl);
                         nc.append(closer);
-                        holder.append(nc);
+                        nc1.append(nc)
+                        holder.append(nc1);
                         // holder.append(closer);
 
                         lastSortedOrder.push($scope.sites[a][b])
@@ -819,6 +834,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
                     c = getCustomThemeColor(2);
                 basebox.setAttribute("style", "background:-webkit-gradient(linear, left top, left bottom, from(#" + b + "), to(#" + c + "));")
         }
+        asebox.setAttribute("style", "background-color:#fff");
         localStorage.themeColor = JSON.stringify(a)
     }
 
@@ -993,6 +1009,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             cancelTMTContextMenu()
         });
         main();
+
         // localStorage.hintVersion ==
         //     MAJOR_VERSION ? $("#hintbox").hide() : $("#hintClick").click(function() {
         //         localStorage.hintVersion = MAJOR_VERSION;
