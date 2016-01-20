@@ -704,12 +704,12 @@ tabApp.controller('tabCtrl', function($scope,$compile){
                         })
                         // URI TEXT
                         var taburl=$("<a/>",{
-                            text: _.strRight(_.strRight(b,'//'),'/'),
+                            text: _.prune('/'+_.strLeftBack(_.strRight(_.strRight(b,'//'),'/'),'#'),50),
                             click: onURLClick,
                             tabId: $scope.sites[a][b].id,
-                            "class": "db-tablink"
+                            "class": "left col s10 db-tablink"
                         })
-                        var closer=$("<span/>",{click:onTabClose,tabId: $scope.sites[a][b].id,"class":'right'});
+                        var closer=$("<span/>",{click:onTabClose,tabId: $scope.sites[a][b].id,"class":'col s1 right'});
 
                         closer.append(icn);
                         nc.append(taburl);
