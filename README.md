@@ -4,7 +4,7 @@ Browser navigation with organization based on domain prefixes. Original idea, an
 
 ## Light Example (Usually way more than 31)
 
-![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/comparison.png)
+![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/v0.2/shot2.png)
 
 
 ### Note
@@ -47,11 +47,11 @@ Here are some screenshots
 
 ## Popup view:
 
-![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot1.png)
+![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/v0.2/shot1.png)
 
 
 ## Clickable Prefixed Tab Locations (github.com)
-![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot2.png)
+![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/v0.2/shot2.png)
 
 ## Clickable Prefixed Tab Locations (mail.google.com)
-![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/shot3.png)
+![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/v0.2/shot3.png)
