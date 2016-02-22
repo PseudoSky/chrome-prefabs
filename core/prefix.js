@@ -647,7 +647,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         localStorage.popupsize == "narrow" ? $("body").attr("style", "width:680px; height:599px;") : localStorage.popupsize == "small" && ($("body").attr("style", "width:620px; height:450px;"), smallMode = !0);
         if (!localStorage.disablePreview || localStorage.disablePreview == "false") showPreview = !0;
         localStorage.updateread && localStorage.updateread < MAJOR_VERSION && $("#logoarea").show();
-        usageMode == 0 ? (TMTAREA_HEIGHT = 405, uparrow.style.top = "140px", tmtlistbox.style.top = "165px", tmtlistbox.style.height = "405px") : TMTAREA_HEIGHT = 430;
+        // usageMode == 0 ? (TMTAREA_HEIGHT = 405, uparrow.style.top = "140px", tmtlistbox.style.top = "165px", tmtlistbox.style.height = "405px") : TMTAREA_HEIGHT = 430;
         // $("#innertabarea")[0].addEventListener("mousewheel", mouseWheelMoveInnerArea, !1);
         initBackgroundData(function() {
             Columns = background.Columns;
@@ -735,7 +735,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             for (var a = 0; a < lastSortedOrder.length; a++) placeTabIcon(lastSortedOrder[a]);
             moveInnerArea(0, 0);
             fillTMTArea();
-            document.getElementById("tmtlistbox").addEventListener("mousewheel", mouseWheelMoveTMTArea, !1);
+            // document.getElementById("tmtlistbox").addEventListener("mousewheel", mouseWheelMoveTMTArea, !1);
             moveTMTArea(0, 0);
             changeBackground(localStorage.themeColor ? JSON.parse(localStorage.themeColor) : 0);
             chrome.tabs.query ? chrome.tabs.query({
@@ -772,7 +772,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         maxTabIconOrder && (a = maxTabIconOrder + extraTabAreaNeeded);
         a = (Math.ceil((a + 1) / 5) + 1) * 180 + 20;
         a < TABAREA_WIDTH && (a = TABAREA_WIDTH);
-        innertabarea.style.width = a + "px"
+        // innertabarea.style.width = a + "px"
     }
 
     function moveInnerArea(a, b) {
@@ -796,16 +796,16 @@ tabApp.controller('tabCtrl', function($scope,$compile){
 
     function moveTMTArea(a, b) {
         cancelTMTContextMenu();
-        var c = $(innertmtarea).position().top + a,
-            d = $(innertmtarea).height();
-        d > TMTAREA_HEIGHT ? (uparrow.setAttribute("disabled", "false"), downarrow.setAttribute("disabled", "false")) : (uparrow.setAttribute("disabled", "true"), downarrow.setAttribute("disabled", "true"));
-        c < TMTAREA_HEIGHT - d && (c = TMTAREA_HEIGHT - d, downarrow.setAttribute("disabled", "true"));
-        c >= 0 && (c = 0, uparrow.setAttribute("disabled", "true"));
-        innertmtarea.style.top = c + "px";
-        b != 0 && setTimeout(function() {
-            moveTMTArea(a,
-                b - 1)
-        }, 50)
+        // var c = $(innertmtarea).position().top + a,
+        //     d = $(innertmtarea).height();
+        // d > TMTAREA_HEIGHT ? (uparrow.setAttribute("disabled", "false"), downarrow.setAttribute("disabled", "false")) : (uparrow.setAttribute("disabled", "true"), downarrow.setAttribute("disabled", "true"));
+        // c < TMTAREA_HEIGHT - d && (c = TMTAREA_HEIGHT - d, downarrow.setAttribute("disabled", "true"));
+        // c >= 0 && (c = 0, uparrow.setAttribute("disabled", "true"));
+        // innertmtarea.style.top = c + "px";
+        // b != 0 && setTimeout(function() {
+        //     moveTMTArea(a,
+        //         b - 1)
+        // }, 50)
     }
 
     function mouseWheelMoveTMTArea(a) {
@@ -834,7 +834,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
                     c = getCustomThemeColor(2);
                 basebox.setAttribute("style", "background:-webkit-gradient(linear, left top, left bottom, from(#" + b + "), to(#" + c + "));")
         }
-        asebox.setAttribute("style", "background-color:#fff");
+        // asebox.setAttribute("style", "background-color:#fff");
         localStorage.themeColor = JSON.stringify(a)
     }
 
@@ -957,9 +957,9 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             var a = parseInt($(this).attr("to"));
             changeBackground(a)
         });
-        tabarea.onselectstart = function() {
-            return !1
-        };
+        // tabarea.onselectstart = function() {
+        //     return !1
+        // };
         // $(leftarrow).click(function() {
         //     moveInnerArea(55, 6)
         // });
@@ -998,16 +998,16 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         // tmtlistbox.onselectstart = function() {
         //     return !1
         // };
-        $(downarrow).click(function() {
-            moveTMTArea(-25, 6)
-        });
-        $(contextmenuremove).click(function(a) {
-            onTabRemove(a);
-            cancelTMTContextMenu()
-        });
-        $(contextmenucancel).click(function() {
-            cancelTMTContextMenu()
-        });
+        // $(downarrow).click(function() {
+        //     moveTMTArea(-25, 6)
+        // });
+        // $(contextmenuremove).click(function(a) {
+        //     onTabRemove(a);
+        //     cancelTMTContextMenu()
+        // });
+        // $(contextmenucancel).click(function() {
+        //     cancelTMTContextMenu()
+        // });
         main();
 
         // localStorage.hintVersion ==
