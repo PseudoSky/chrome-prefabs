@@ -2,7 +2,7 @@
 
 Browser navigation with organization based on domain prefixes. Original idea, and implementation in < 1 hour (No modification since)
 
-## Light Example (Usually way more than 31)
+## New Version! v0.2 (I think it's much better)
 
 ![](https://github.com/PseudoSky/chrome-prefabs/blob/master/preview/v0.2/shot2.png)
 
