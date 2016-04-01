@@ -34,7 +34,7 @@ body {
     top:-70px;
     width:300px;
     height:300px;
-    background:url(/img/tmtchrome_logo.png) no-repeat;
+    background:url(/assets/img/tmtchrome_logo.png) no-repeat;
     position:absolute;
     overflow:hidden;
     z-index:3000;
@@ -68,7 +68,7 @@ body {
     width:180px;
     height:600px;
     position:absolute;
-    background-image:url(/img/tmtchrome_tmtbackground.png);
+    background-image:url(/assets/img/tmtchrome_tmtbackground.png);
     overflow:hidden;
 }
 #tmtlistbox {
@@ -129,7 +129,7 @@ body {
     width:50px;
     height:50px;
     position:absolute;
-    background-image:url(/img/tmtchrome_arrow1.png);
+    background-image:url(/assets/img/tmtchrome_arrow1.png);
     z-index:1000;
 }
 #rightarrow {
@@ -138,7 +138,7 @@ body {
     width:50px;
     height:50px;
     position:absolute;
-    background-image:url(/img/tmtchrome_arrow2.png);
+    background-image:url(/assets/img/tmtchrome_arrow2.png);
     z-index:1000;
 }
 #tmtleftarrow {
@@ -147,7 +147,7 @@ body {
     width:16px;
     height:30px;
     position:absolute;
-    background-image:url(/img/tmtchrome_arrow3.png);
+    background-image:url(/assets/img/tmtchrome_arrow3.png);
     z-index:1000;
 }
 #tmtrightarrow {
@@ -156,7 +156,7 @@ body {
     width:16px;
     height:30px;
     position:absolute;
-    background-image:url(/img/tmtchrome_arrow4.png);
+    background-image:url(/assets/img/tmtchrome_arrow4.png);
     z-index:1000;
 }
 #uparrow {
@@ -165,7 +165,7 @@ body {
     width:160px;
     height:20px;
     position:absolute;
-    background-image:url(/img/tmtchrome_tmtarrowup.png);
+    background-image:url(/assets/img/tmtchrome_tmtarrowup.png);
     z-index:1000;
 }
 #downarrow {
@@ -174,7 +174,7 @@ body {
     width:160px;
     height:20px;
     position:absolute;
-    background-image:url(/img/tmtchrome_tmtarrowdown.png);
+    background-image:url(/assets/img/tmtchrome_tmtarrowdown.png);
     z-index:1000;
 }
 #tmtcontextmenu {
@@ -216,7 +216,7 @@ body {
     width:60px;
     height:48px;
     overflow:hidden;
-    background-image:url(/img/tmtchrome_youarehere.png);
+    background-image:url(/assets/img/tmtchrome_youarehere.png);
     z-index: 5000;
 }
 #firstrunbox {
@@ -243,14 +243,14 @@ body {
 .tabexterior {
     width:180px;
     height:130px;
-    background-image:url(/img/tmtchrome_tab.png);
+    background-image:url(/assets/img/tmtchrome_tab.png);
     position:absolute;
     opacity: 0.85;
 }
 .tabexterior:hover {
     width:180px;
     height:130px;
-    background-image:url(/img/tmtchrome_tab.png);
+    background-image:url(/assets/img/tmtchrome_tab.png);
     position:absolute;
     opacity: 1.0;
 }
@@ -291,7 +291,7 @@ body {
     top:4px;
     width:20px;
     height:20px;
-    background-image:url(/img/tmtchrome_pop.png);
+    background-image:url(/assets/img/tmtchrome_pop.png);
 
     position:absolute;
     overflow:hidden;
@@ -303,7 +303,7 @@ body {
     top:5px;
     width:20px;
     height:20px;
-    background-image:url(/img/tmtchrome_pop.png);
+    background-image:url(/assets/img/tmtchrome_pop.png);
     position:absolute;
     overflow:hidden;
     cursor:pointer;
@@ -321,7 +321,7 @@ body {
     width:160px;
     height:30px;
     overflow:hidden;
-    background-image:url(/img/tmtchrome_tmttab.png);
+    background-image:url(/assets/img/tmtchrome_tmttab.png);
     padding-left:4px;
     padding-top:4px;
 
@@ -331,7 +331,7 @@ body {
     width:160px;
     height:30px;
     overflow:hidden;
-    background-image:url(/img/tmtchrome_tmttab.png);
+    background-image:url(/assets/img/tmtchrome_tmttab.png);
     padding-left:4px;
     padding-top:4px;
 
@@ -350,7 +350,7 @@ body {
     left:5px;
     width:22px;
     height:36px;
-    background-image:url(/img/tmtchrome_smallmenu.png);
+    background-image:url(/assets/img/tmtchrome_smallmenu.png);
 
     cursor:pointer;
     position:relative;
@@ -389,7 +389,7 @@ body {
     font-size:10px;
     cursor:pointer;
     position:relative;
-    background-image:url(/img/tmtchrome_largeglow.png);
+    background-image:url(/assets/img/tmtchrome_largeglow.png);
 
 }
 .tmtcontextmenutext{
@@ -525,13 +525,13 @@ body {
     left:85px; padding-top: 1px;
 }
 #sortbynamebutton{
-    left:140px; background-image:url(/img/tmtchrome_sortbuttons_01.png);
+    left:140px; background-image:url(/assets/img/tmtchrome_sortbuttons_01.png);
 }
 #sortbyaddressbutton{
-    left:165px; background-image:url(/img/tmtchrome_sortbuttons_02.png);
+    left:165px; background-image:url(/assets/img/tmtchrome_sortbuttons_02.png);
 }
 #sortbytimebutton{
-    left:190px; background-image:url(/img/tmtchrome_sortbuttons_03.png);
+    left:190px; background-image:url(/assets/img/tmtchrome_sortbuttons_03.png);
 }
 #optionlabel{
     left:215px; position: absolute; cursor: pointer; padding-top: 2px; margin-left: 8px;
@@ -575,7 +575,7 @@ body {
     /*top:6px;*/
     width:21px;
     /*height:16px;*/
-    background-image:url(/img/tmtchrome_close.png);
+    background-image:url(/assets/img/tmtchrome_close.png);
     /*opacity:0.2;*/
 
     position:absolute;
@@ -587,7 +587,7 @@ body {
     /*top:6px;*/
     /*width:21px;*/
     /*height:16px;*/
-    /*background-image:url(/img/tmtchrome_close.png);*/
+    /*background-image:url(/assets/img/tmtchrome_close.png);*/
     /*opacity:1.0;*/
 
     /*position:absolute;*/

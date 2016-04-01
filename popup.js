@@ -1,1 +1,1 @@
-window.location.href="/core/popup.html";
+window.location.href="/popup.html";

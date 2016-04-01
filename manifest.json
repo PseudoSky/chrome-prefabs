@@ -1,10 +1,10 @@
 {
    "background": {
-      "scripts": [ "core/background.js" ]
+      "scripts": [ "js/background.js" ]
    },
    "browser_action": {
-      "default_icon": "img/tmtchrome_browserbutton.png",
-      "default_popup": "core/prefix.html",
+      "default_icon": "assets/img/tmtchrome_browserbutton.png",
+      "default_popup": "pages/prefix/prefix.html",
       "default_title": "Triefab Tabs"
    },
    "commands": {
@@ -24,11 +24,11 @@
       }
    },
    "content_scripts": [ {
-      "js": [ "core/tmtfocus.js" ],
+      "js": [ "js/tmtfocus.js" ],
       "matches": [ "http://*/*" ],
       "run_at": "document_end"
    }, {
-      "js": [ "core/tmtfocus.js" ],
+      "js": [ "js/tmtfocus.js" ],
       "matches": [ "https://*/*" ],
       "run_at": "document_end"
    } ],
@@ -36,16 +36,16 @@
    "default_locale": "en",
    "description": "__MSG_description__",
    "icons": {
-      "128": "img/tmtchrome_logo128.png",
-      "16": "img/tmtchrome_logo16.png",
-      "32": "img/tmtchrome_logo32.png",
-      "48": "img/tmtchrome_logo48.png"
+      "128": "assets/img/tmtchrome_logo128.png",
+      "16": "assets/img/tmtchrome_logo16.png",
+      "32": "assets/img/tmtchrome_logo32.png",
+      "48": "assets/img/tmtchrome_logo48.png"
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWX/cfO3ls3pe/TJbtcRSyiH6w1Qu84sfzmaebphivBfMXpt363mjc0NmivLITvrWZ20/fPv6+vaZx8ozeUnL7a9dEghFq2skxiMCxGJYPnrjLTbJ1QbIG9+rZ+GYIjmBTugMUWDgSLIUtQLg0pDiPfd9sAJ9us0w8Ud+xKlTpqwIDAQAB",
    "manifest_version": 3,
    "minimum_chrome_version": "22",
    "name": "Triefab",
-   "options_page": "core/options.html",
+   "options_page": "pages/options.html",
    "permissions": [ "tabs", "bookmarks", "\u003Call_urls>", "contextMenus", "unlimitedStorage" ],
    "short_name": "Triefab",
    "update_url": "https://clients2.google.com/service/update2/crx",

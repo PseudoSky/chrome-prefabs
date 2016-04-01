@@ -42,7 +42,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         $("<img/>", {
             id: "tabimg" + a.id,
             "class": "tabimage",
-            src: "/img/sample_screen.png",
+            src: "/assets/img/sample_screen.png",
             title: d.URL[0],
             click: onTabSelect,
             tabId: a.id
@@ -58,10 +58,10 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             "class": "tabfavicon"
         }).appendTo(b);
         try {
-            c.attr("src", d.favIconURL ? d.favIconURL : chrome.extension.getURL("/img/tmtchrome_defaulticon.png"))
+            c.attr("src", d.favIconURL ? d.favIconURL : chrome.extension.getURL("/assets/img/tmtchrome_defaulticon.png"))
         } catch (f) {
             c.attr("src",
-                chrome.extension.getURL("/img/tmtchrome_defaulticon.png"))
+                chrome.extension.getURL("/assets/img/tmtchrome_defaulticon.png"))
         }
         $("<div/>", {
             "class": "tabpopicon",
@@ -369,7 +369,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         b.pinned && currentRow.id !=
             3 && $("<img/>", {
                 "class": "tmtpin",
-                src: "/img/pin.png"
+                src: "/assets/img/pin.png"
             }).appendTo(a);
         b = b.title || b.link;
         $("<div/>", {
