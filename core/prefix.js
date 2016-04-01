@@ -100,16 +100,27 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         a.ctrlKey || a.metaKey || a.button == 1 ? onTabClose(a) : (a = parseInt($(a.currentTarget).attr("tabId")), $scope.sites[a.hostname][a.url] && background.selectTab(a, _focusedId))
     }
     function onURLClick(a){
-        a = parseInt($(a.currentTarget).attr("tabId"));
-        last_three = _(last_three).tap(function(a){a.pop()}).reverse().tap(function(a){a.push(a)}).reverse().value();
+        a = _.forEach($(a.currentTarget).attr("tabId").split(','),function(tabx){
+            tabx=parseInt(tabx);
+            console.log('TAB',tabx);
+            last_three = _(last_three).tap(function(ta){ta.pop()}).reverse().tap(function(ta){ta.push(ta)}).reverse().value();
+
+            // );
+            chrome.tabs.update(tabx, {
+                    active: !0,
+                    selected: !0
+                }, function(b) {
+                    b.active || b.selected ? closeAllViews() : console.error("cannot focus tab", a);
+            });
+        })
         // last_three=last_three.reverse().push(a).reverse();
 
-        chrome.tabs.update(a, {
-                active: !0,
-                selected: !0
-            }, function(b) {
-                b.active || b.selected ? closeAllViews() : console.error("cannot focus tab", a);
-        });
+        // chrome.tabs.update(a, {
+        //         active: !0,
+        //         selected: !0
+        //     }, function(b) {
+        //         b.active || b.selected ? closeAllViews() : console.error("cannot focus tab", a);
+        // });
     }
     function onCloseClick(a){
         a = parseInt($(a.currentTarget).attr("tabId"));
@@ -120,23 +131,42 @@ tabApp.controller('tabCtrl', function($scope,$compile){
 
     function onTabClose(a) {
         cancelTMTContextMenu();
-        var b = parseInt($(a.currentTarget).attr("tabId"));
-        console.log("is b"+b.active);
+        _.forEach($(a.currentTarget).attr("tabId").split(','),function(tabx){
+            tabx=parseInt(tabx);
+            console.log('TAB',tabx);
+            last_three = _(last_three).tap(function(ta){ta.pop()}).reverse().tap(function(ta){ta.push(ta)}).reverse().value();
+
+            // );
+            chrome.tabs.remove(tabx, function() {
+                // if ($(".tabinterior").length == 1) window.close();
+                // else {
+                    var a = $("#tab" + tabx);
+                    a.attr("order") == maxTabIconOrder && maxTabIconOrder--;
+                    a.remove();
+                    Columns.getCurrentRowId() == 3 && setTimeout(function() {
+                        clearTMTArea();
+                        fillTMTArea();
+                    }, 1E3);
+                // }
+            });
+        })
+        // var b = parseInt($(a.currentTarget).attr("tabId"));
+        // console.log("is b"+b.active);
             // b.active || b.selected ? console.log('active') : onURLClick(last_three[0];
         // }
 
-        chrome.tabs.remove(b, function() {
-            // if ($(".tabinterior").length == 1) window.close();
-            // else {
-                var a = $("#tab" + b.id);
-                a.attr("order") == maxTabIconOrder && maxTabIconOrder--;
-                a.remove();
-                Columns.getCurrentRowId() == 3 && setTimeout(function() {
-                    clearTMTArea();
-                    fillTMTArea();
-                }, 1E3);
-            // }
-        });
+        // chrome.tabs.remove(b, function() {
+        //     // if ($(".tabinterior").length == 1) window.close();
+        //     // else {
+        //         var a = $("#tab" + b.id);
+        //         a.attr("order") == maxTabIconOrder && maxTabIconOrder--;
+        //         a.remove();
+        //         Columns.getCurrentRowId() == 3 && setTimeout(function() {
+        //             clearTMTArea();
+        //             fillTMTArea();
+        //         }, 1E3);
+        //     // }
+        // });
         // cancelTMTContextMenu();
 
         /*
@@ -145,8 +175,10 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         only tab, if so delete the site,
         else remove the tab
         */
-        if(a.currentTarget.parentNode.parentNode.children.length==2){
-            $(a.currentTarget.parentNode.parentNode).remove();
+        // console.log('PARENT of removed',a.currentTarget.parentNode.parentNode.parentNode,_.keys(a.currentTarget.parentNode.parentNode.parentNode));
+        console.log('Parent',a.currentTarget.parentNode.parentNode.parentNode,'children',a.currentTarget.parentNode.parentNode.parentNode.children,'bool',a.currentTarget.parentNode.parentNode.parentNode.children.length<=2);
+        if(a.currentTarget.parentNode.parentNode.parentNode.children.length<=2){
+            $(a.currentTarget.parentNode.parentNode.parentNode).remove();
         }else{
             $(a.currentTarget.parentNode).remove();
         }
@@ -395,10 +427,14 @@ tabApp.controller('tabCtrl', function($scope,$compile){
         }, function(c) {
             var e = c.url;
             if(!$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)])$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)]={id:c.id,fqdn:fqdn(e)};
-            $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e] = new tabData(c);
-            $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e].title = d.title;
-            $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e].favIconURL = d.favIconURL;
-            console.log('E',e,'Prefixed',$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)],$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e]);
+            if(!$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e]){
+                $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e] = new tabData(c);
+                $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e].title = d.title;
+                $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e].favIconURL = d.favIconURL;
+            }
+            $scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e].ids.push(d.id);
+            console.log('TAB',$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e]);
+            // console.log('E',e,'Prefixed',$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)],$scope.sites[/^.+?[^\/:](?=[?\/]|$)/.exec(e)][e]);
             var c = !1,
                 g = Columns.getCurrentRowId();
             if (!d.pinned && g != 2 || g == 3) Columns.removeTabInRow(b), c = !0;
@@ -510,7 +546,11 @@ tabApp.controller('tabCtrl', function($scope,$compile){
             if(!$scope.sites[host]){
                 $scope.sites[host]={id:a.id,fqdn:fqdn(a.url),url:host};
             }
-            $scope.sites[host][a.url] = new tabData(a);
+            if(!$scope.sites[host][a.url]){
+                $scope.sites[host][a.url]=new tabData(a);
+            }
+            $scope.sites[host][a.url].ids.push(a.id);
+            // $scope.sites[host][a.url] = new tabData(a);
         }
     }
     function fqdn(url){
@@ -530,6 +570,7 @@ tabApp.controller('tabCtrl', function($scope,$compile){
     }
     function tabData(a) {
         this.id = a.id;
+        this.ids=[];
         this.windowId = a.windowId;
         this.title = a.title;
         this.favIconURL = a.favIconUrl;
@@ -706,12 +747,27 @@ tabApp.controller('tabCtrl', function($scope,$compile){
                         var taburl=$("<a/>",{
                             text: _.prune('/'+_.strLeftBack(_.strRight(_.strRight(b,'//'),'/'),'#'),50),
                             click: onURLClick,
-                            tabId: $scope.sites[a][b].id,
+                            tabId: $scope.sites[a][b].ids[0],
                             "class": "left col s10 db-tablink"
                         })
-                        var closer=$("<span/>",{click:onTabClose,tabId: $scope.sites[a][b].id,"class":'col s1 right'});
-
+                        var closer=$("<span/>",
+                            {
+                                click:onTabClose,
+                                tabId: $scope.sites[a][b].ids.join(','),
+                                "class":'col s1 right'
+                            });
                         closer.append(icn);
+                        if($scope.sites[a][b].ids.length>1){
+                            
+                            var counter=$("<span/>",
+                                {
+                                    // click:onTabClose,
+                                    text: $scope.sites[a][b].ids.length,
+                                    "class":'counter'
+                                });
+                            nc.append(counter);
+                        }
+
                         nc.append(taburl);
                         nc.append(closer);
                         nc1.append(nc)

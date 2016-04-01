@@ -645,3 +645,7 @@ a:hover,i:hover{
 .collection.with-header .collection-item{
     overflow: hidden;
 }
+
+.counter{
+    color:red;
+}
